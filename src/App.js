@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
 
-function App() {
+import BasicForm from "./components/BasicForm";
+import MultiForm from "./components/MultiForm";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav className="container flex justify-around py-8 mx-auto bg-white">
+        <div>
+          <h3 className="text-2xl font-medium text-blue-500">React Forms</h3>
+        </div>
+        <div className="space-x-8">
+          <NavLink to="/">Single Form</NavLink>
+          <NavLink to="/multiform">Multiform</NavLink>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<BasicForm />} />
+        <Route path="/multiform" element={<MultiForm />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
